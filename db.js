@@ -33,7 +33,7 @@ module.exports =
 {
 	connect : function connect ()
 	{
-		console.log("im trying!!");
+		console.log("im trying to connect db!!");
 		mongoose.connect('mongodb://localhost/cubedromedb');
 
 		db = mongoose.connection;

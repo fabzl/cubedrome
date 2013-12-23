@@ -21,26 +21,39 @@ var SocketEvent =
 };
 
 
-
-
-
 //-----------------------------------------------------------------------------//
-// private vars
+// required modules 
 //-----------------------------------------------------------------------------//
-
 
 var _mongodb							=	require ("mongodb"),
-	_mongoServer						=	null,
-	_mongoClient						=	null,
 	express								=	require("express"),
 	app									=	express(),
-	port								=	3700,
 	_path								=	require ("path"),
-	_io									=	require('socket.io').listen(app.listen(port)),
-	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",	
-	_userIDArray 						= 	[],
+	_io									=	require('socket.io').listen(app.listen(port));
+//-----------------------------------------------------------------------------//
+// system required stuff
+//-----------------------------------------------------------------------------//
+var	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",	
+	port								=	3700,
+	_mongoServer						=	null,
+	_mongoClient						=	null;
+
+
+//-----------------------------------------------------------------------------//
+// required dependecies
+//-----------------------------------------------------------------------------//
+
+var	schema								=	require("./schema"),
+		db									=	require('./db');
+	
+
+
+//-----------------------------------------------------------------------------//
+// private vars and user pool 
+//-----------------------------------------------------------------------------//
+var _userIDArray						=	[],
 	_nickNameArray						=	[],
-	_firstNameArray 					=	[],
+	_firstNameArray						=	[],
 	_lastNameArray						=	[],
 	countryArray						=	[],
 	emailArray							=	[],
@@ -50,20 +63,15 @@ var _mongodb							=	require ("mongodb"),
 	blackOrWhiteArray					=	[],
 	confirmedUserArray					=	[],
 	goldCubesArray						=	[],
-	colorModeArray 						= 	[],
+	colorModeArray						=	[],
 	scoreArray							=	[],
-	countryFilterArray					= 	[],
+	countryFilterArray					=	[],
 	itemsArray							=	[],
 	reportedArray						=	[],
 	penaltyOn							=	[],
-	usersConnected 						=	0,term
-	schema								=	require("./schema"),
-	db									= 	require('./db');
-	
+	usersConnected						=	0;
 
 
-
-//console.log("Listening on port " + port);
 
 db.connect ();
 app.configure (expressConfiguration);
