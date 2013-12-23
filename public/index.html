@@ -1,0 +1,138 @@
+<html>
+
+<head>
+
+	<title>Cubedrome</title>
+	<script src="js/chat.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="css/style.css"></script>
+
+</head>
+
+<body>
+		<div class="wrapper">
+
+
+			<div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+			<div class="controls">Name: <input style="width:350px;" id="name" class="name"><br>
+			<input style="width:350px;" id="field" class="field">
+			<input id="sendButton" type="button" value="send"></div>
+
+
+			<section class="register-section">
+				<header class="register-header">
+					<h1 class="app-name">Register</h1>
+				</header>
+
+				<form class="register-table">
+					<div class="form-column">
+
+						<div class="form-row">
+							<label class="userIDField">userID</label>
+							<input type="text" name="date-updated" class="register-date-input"></input>
+						</div>
+
+						<div class="form-row">
+							<label class="cirrusIDField">cirrusID</label>
+							<input type="text" name="date-updated" class="register-date-input"></input>
+						</div>
+						<div class="form-row">
+							<label class="rnickNameField">nickName</label>
+							<input type="text" name="date-updated" class="register-date-input"></input>
+						</div>
+
+						<div class="form-row">
+							<label class="firstNameField">firstName</label>
+							<input type="text" name="start-date" class="register-date-input"></input>
+						</div>
+						<div class="form-row">
+							<label class="lastNameField">lastName</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+							<div class="form-row">
+							<label class="emailField">email</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+						</div>
+							<div class="form-row">
+							<label class="sexField">sex</label>
+							<input type="radio" name="sex" value="male">Male<br>
+							<input type="radio" name="sex" value="female">Female
+						</div>
+
+						</div>
+							<div class="form-row">
+							<label class="blackOrWhiteField">black or White</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+
+						</div>
+							<div class="form-row">
+							<label class="goldCubesField">goldCubes</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+												</div>
+							<div class="form-row">
+							<label class="scoreField">score</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+
+
+						</div>
+							<div class="form-row">
+							<label class="colorModeField">colorMode</label>
+							<input type="text" name="version" class="register-text-input"></input>
+						</div>
+						
+
+						<div class="form-row">
+							<label class="countryField">country</label>
+							<input type="text" name="job-number" class="register-text-input"></input>
+						</div>
+
+						<div class="form-row">
+							<label class="countriesFilteredField">countriesFiltered</label>
+							<input type="text" name="job-number" class="register-text-input"></input>
+						</div>
+
+						<div class="form-row">
+							<label class="itemsField">items</label>
+							<input type="text" name="job-number" class="register-text-input"></input>
+						</div>
+
+							<div class="form-row">
+							<label class="dateOfBirthField">Date of Birth</label>
+							<input type="date" name="start-date" class="register-date-input"></input>
+								</div>
+						</div>
+							<div class="form-row">
+							<label class="confirmedUserField">confirmedUser</label>
+							<input type="text" name="start-date" class="register-date-input"></input>
+						</div>
+
+							<div class="form-row">
+							<label class="reportedField">reported</label>
+							<input type="text" name="start-date" class="register-date-input"></input>
+						</div>
+						<div class="form-row">
+							<label class="penaltyField">penalty</label>
+							<input type="text" name="start-date" class="register-date-input"></input>
+						</div>
+						<div class="form-row">
+							<label class="usersConnectedField">usersConnected</label>
+							<input type="text" name="start-date" class="register-date-input"></input>
+						</div>
+
+						<input type="submit" id="sendRegister" type="button" value="register"></div>
+
+
+					</div>
+
+					<div class="form-column">
+					</div>
+				</form>
+
+			</section>
+		</div>
+	</body>
+</html>
