@@ -58,7 +58,7 @@ var _mongodb							=	require ("mongodb"),
  	itemsArray							=	[],
  	reportedArray						=	[],
  	penaltyOn							=	[],
- 	usersConnected 						=	0,
+ 	usersConnected 						=	0,term
  	schema								=	require("./schema"),
 	db									= 	require('./db');
 	
