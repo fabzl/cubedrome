@@ -4,8 +4,7 @@
 
 // Events we will emit with socket.io.
 // These should also be defined on the client side for consistency.
-//var ServerEvent =
-
+var ServerEvent =
 {
 	DB_RESULT_SUCCESS :	"dbResultSuccess"
 };
@@ -33,40 +32,40 @@ var SocketEvent =
 var _mongodb							=	require ("mongodb"),
 	_mongoServer						=	null,
 	_mongoClient						=	null,
-	_db									=	null,
-	express 							=	require("express"),
-	app 								=	express(),
+	express								=	require("express"),
+	app									=	express(),
 	port								=	3700,
- 	_path								=	require ("path"),
- 	_io 								=	require('socket.io').listen(app.listen(port)),
- 	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",	
- 	_userIDArray 						= 	[],
- 	_nickNameArray						=	[],
- 	_firstNameArray 					=	[],
- 	_lastNameArray						=	[],
- 	countryArray						=	[],
- 	emailArray							=	[],
- 	cirruIDArray						=	[],
- 	sexArray							=	[],
- 	dateOfBirthArray					=	[],
- 	blackOrWhiteArray					=	[],
- 	confirmedUserArray					=	[],
- 	goldCubesArray						=	[],
- 	colorModeArray 						= 	[],
- 	scoreArray							=	[],
- 	countryFilterArray					= 	[],
- 	itemsArray							=	[],
- 	reportedArray						=	[],
- 	penaltyOn							=	[],
- 	usersConnected 						=	0,term
- 	schema								=	require("./schema"),
+	_path								=	require ("path"),
+	_io									=	require('socket.io').listen(app.listen(port)),
+	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",	
+	_userIDArray 						= 	[],
+	_nickNameArray						=	[],
+	_firstNameArray 					=	[],
+	_lastNameArray						=	[],
+	countryArray						=	[],
+	emailArray							=	[],
+	cirruIDArray						=	[],
+	sexArray							=	[],
+	dateOfBirthArray					=	[],
+	blackOrWhiteArray					=	[],
+	confirmedUserArray					=	[],
+	goldCubesArray						=	[],
+	colorModeArray 						= 	[],
+	scoreArray							=	[],
+	countryFilterArray					= 	[],
+	itemsArray							=	[],
+	reportedArray						=	[],
+	penaltyOn							=	[],
+	usersConnected 						=	0,term
+	schema								=	require("./schema"),
 	db									= 	require('./db');
 	
 
 
 
-console.log("Listening on port " + port);
+//console.log("Listening on port " + port);
 
+db.connect ();
 app.configure (expressConfiguration);
 app.use(express.static(__dirname + '/public'));
 
@@ -88,11 +87,11 @@ function expressConfiguration ()
 
 
 _io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: 'welcome to the chat' });
-    socket.on('send', function (data) {
-    	console.log(data);
-        _io.sockets.emit('message', data);
-    });
+	socket.emit('message', { message: 'welcome to the chat' });
+	socket.on('send', function (data) {
+		console.log(data);
+		_io.sockets.emit('message', data);
+	});
 });
 
 
@@ -112,36 +111,6 @@ _mongoClient.open (mongoClientConnectHandler);
 
 //console.log(schema);
 //var record  = new schema(
-
-
-
-
-	
-function mongoClientConnectHandler (err, client)
-{
-	console.log ("mongoClientConnectHandler... err?" + err);
-
-	if (!err)
-	{
-		console.log ("Mongo Client connected");
-		
-		_db = client.db ("sow-app-db");
-		_formsCollection = _db.collection ("forms-collection");
-		
-		
-		// listen for new web clients:
-		_server.listen (8080);
-		
-		// open the serial port. Change the name to the name of your port, just like in Processing and Arduino,
-		// and look for return and newline at the end of each data packet:
-		// _sp = new _spBase.SerialPort ("/dev/tty.usbserial-A5011FW7", {parser: _spBase.parsers.readline ("\n")});
-		
-		_expressApp.configure (expressConfiguration);
-		
-		// listen for socket.io connections/disconnections from clients:
-		
-	}
-}
 
 
 
@@ -248,11 +217,10 @@ app.set('views', __dirname + '/tpl');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.get("/", function(req, res){
-    res.render("page",{});
+	res.render("page",{});
 
 });
 */
-console.log("lalala");
 
 
 // expose app

@@ -21,33 +21,38 @@ module.exports = _mongoose.connection;
  */
 
 var express = require('express'),
-    mongoose = require('mongoose'),
-    pkg = require('./package.json'),
-    db;
+	mongoose = require('mongoose'),
+	pkg = require('./package.json'),
+	db;
 
 console.log("im here!!");
 
 
 
-module.exports = function () {
-
+module.exports =
+{
+	connect : function connect ()
+	{
 		console.log("im trying!!");
-        mongoose.connect('mongodb://localhost/cubedromedb');
+		mongoose.connect('mongodb://localhost/cubedromedb');
 
-        db = mongoose.connection;
-        db.on('error', console.error.bind(console, 'connection error:'));
+		db = mongoose.connection;
+		db.on('error', console.error.bind(console, 'connection error:'));
 
-        db.once('open', function callback (db) {
-                // yay!
-                console.log('Connnected to DB\n');
+		db.once('open', function callback (db) {
+				// yay!
+				console.log('Connnected to DB\n');
 
-                //creates our questions in the db (if we haven't already)
-                //then check if a state has been initialised for each question for today
-                //and then after all that we open our twitter stream
-               // page.createQuestions(twitter, page.createStates);
+				//creates our questions in the db (if we haven't already)
+				//then check if a state has been initialised for each question for today
+				//and then after all that we open our twitter stream
+				// page.createQuestions(twitter, page.createStates);
 
-        });
+		});
 
-        return db;
+		return db;
+	}
+};
 
-}
+console.log ("module.exports: \n");
+console.dir (module.exports);
