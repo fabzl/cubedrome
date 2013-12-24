@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="cubedrome" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Cubedrome</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/swfobject.js"></script>
+	<script type="text/javascript" src="swffit.js"></script>
+    
+	<style type="text/css">
+		/* hide from ie on mac \*/
+		html {
+			height: 100%;
+			overflow: hidden;}
+
+		#flashcontent {
+			width: 100%;
+			height: 800px;}
+		/* end hide */
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #666666;
+			overflow: scroll;}
+		p{
+			color:#FFFFFF;}
+	</style>
+</head>
+<body>
+
+    <div id="flashcontent">
+		<p>Flash player not installed.</p>
+    </div>
+    
+	<script type="text/javascript">
+
+		$("body").css("overflow", "hidden");
+		$("body").css("overflow", "auto");
+
+
+		var documentWidth = $(window).width(); 
+		var documentHeight = $(window).height(); 
+  		
+
+		function getHeight(val){
+ 	
+ 		 documentWidth = $(window).width();
+ 		   return documentWidth;
+		}
+
+
+
+		function getWidth(val){
+   
+  			documentHeight = $(window).height();
+    		return documentHeight;
+		}
+
+		$(window).resize(function () { 
+			
+			documentWidth = $(window).width();
+			documentHeight = $(window).height();
+		});
+
+
+
+		var flashvars = {configUrl:"xml/config.xml"};
+		var params = {bgcolor:"0x000000", allowFullScreen:"true", allowScriptAccess:"always", wmode:"direct"};
+		var attributes = {name:"flashcontent", id:"flashcontent"};
+
+
+		swfobject.embedSWF("Cubedrome.swf", "flashcontent",documentWidth,documentHeight, "11.0.0","flash/expressInstall.swf", flashvars, params, attributes);
+		
+		swffit.fit("Cubedrome.swf", documentWidth,documentHeight);
+
+
+
+    </script>
+    
+
+<script type="text/javascript">
+
+
+</body>
+</html>
