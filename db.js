@@ -25,15 +25,15 @@ var express = require('express'),
 	pkg = require('./package.json'),
 	db;
 
-console.log("im here!!");
 
+//console.log("im here!!");
 
 
 module.exports =
 {
 	connect : function connect ()
 	{
-		console.log("im trying to connect db!!");
+		console.log("im trying to connect to db!!");
 		mongoose.connect('mongodb://localhost/cubedromedb');
 
 		db = mongoose.connection;
@@ -54,5 +54,18 @@ module.exports =
 	}
 };
 
-console.log ("module.exports: \n");
-console.dir (module.exports);
+//console.log ("module.exports: \n");
+//console.dir (module.exports);
+
+function insertData(dbName, colName, num) {
+
+  var col = db.getSiblingDB(dbName).getCollection(colName);
+
+  for (i = 0; i < num; i++) {
+    col.insert({x:i});
+  }
+
+  print(col.count());
+
+}
+

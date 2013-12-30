@@ -22,19 +22,16 @@ var SocketEvent =
 
 
 //-----------------------------------------------------------------------------//
-// required modules 
+// required modules & important stuff 
 //-----------------------------------------------------------------------------//
 
 var _mongodb							=	require ("mongodb"),
 	express								=	require("express"),
 	app									=	express(),
-	_path								=	require ("path"),
-	_io									=	require('socket.io').listen(app.listen(port));
-//-----------------------------------------------------------------------------//
-// system required stuff
-//-----------------------------------------------------------------------------//
-var	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",	
 	port								=	3700,
+	_path								=	require ("path"),
+	_io									=	require('socket.io').listen(app.listen(port)),
+	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",
 	_mongoServer						=	null,
 	_mongoClient						=	null;
 
@@ -44,12 +41,12 @@ var	_cirrusKey							=	"2bed2b368a970a3c0bdd7116-5d3d9fb4c37f",
 //-----------------------------------------------------------------------------//
 
 var	schema								=	require("./schema"),
-		db									=	require('./db');
+		db								=	require('./db');
 	
 
 
 //-----------------------------------------------------------------------------//
-// private vars and user pool 
+// logic private vars
 //-----------------------------------------------------------------------------//
 var _userIDArray						=	[],
 	_nickNameArray						=	[],
@@ -73,25 +70,48 @@ var _userIDArray						=	[],
 
 
 
-db.connect ();
-app.configure (expressConfiguration);
-app.use(express.static(__dirname + '/public'));
+function init()
+{
 
+	addSocketListeners();
+
+	//db stuff
+	db.connect();
+	exports = module.exports;
+
+	// sending the index.html
+	console.log("Listening on port " + port);
+	app.configure (expressConfiguration);
+	app.use(express.static(__dirname + '/public'));
+
+}
+
+
+function addSocketListeners()
+{
+	// socket connection listeners 
+	_io.sockets.on (SocketEvent.IO_CONNECT, socketIOConnectionHandler);
+	_io.sockets.on (SocketEvent.IO_DISCONNECT, socketIODisonnectHandler);
+}
 
 
 function expressConfiguration ()
 {
+
 	app.use (express.static (_path.join (__dirname, "public")));
 	
 	// respond to web GET requests with the index.html page:
 	app.get ("/", routeRequestToindex);
 					 
-	function routeRequestToindex (req, res)
-	{
-		res.sendfile (__dirname + "/index.html");
-	}
+
 }
 
+function routeRequestToindex (req, res)
+{
+		res.sendfile (__dirname + "/index.html");
+		console.log("IM RUNNNIF");
+
+}
 
 
 _io.sockets.on('connection', function (socket) {
@@ -103,22 +123,6 @@ _io.sockets.on('connection', function (socket) {
 });
 
 
-
-
-// socket lconnection listeners 
-_io.sockets.on (SocketEvent.IO_CONNECT, socketIOConnectionHandler);
-_io.sockets.on (SocketEvent.IO_DISCONNECT, socketIODisonnectHandler);
-
-
-
-// Connect to the db.
-/*
-_mongoClient = new _mongodb.MongoClient (_mongoServer);
-_mongoClient.open (mongoClientConnectHandler);
-*/
-
-//console.log(schema);
-//var record  = new schema(
 
 
 
@@ -232,4 +236,7 @@ app.get("/", function(req, res){
 
 
 // expose app
-exports = module.exports;
+
+init();
+
+
