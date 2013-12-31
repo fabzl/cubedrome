@@ -98,7 +98,7 @@ function addSocketListeners()
 function expressConfiguration ()
 {
 
-	app.use (express.static (_path.join (__dirname, "public")));
+	app.use(express.static (_path.join (__dirname, "public")));
 	
 	// respond to web GET requests with the index.html page:
 	app.get ("/", routeRequestToindex);
@@ -218,25 +218,8 @@ function formDataInsertHandler (err, doc)
 }
 
 
-/* for using jade
 
-
-var io = require('socket.io').listen(app.listen(port));
-
-console.log("Listening on port " + port);
-
-app.set('views', __dirname + '/tpl');
-app.set('view engine', "jade");
-app.engine('jade', require('jade').__express);
-app.get("/", function(req, res){
-	res.render("page",{});
-
-});
-*/
-
-
-// expose app
-
+// this starts everything.
 init();
 
 

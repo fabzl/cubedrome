@@ -41,7 +41,7 @@ window.onload = function() {
 
             for(var i=0; i<messages.length; i++) {
 
-                console.log(messages[i].message);    
+                console.log(messages[i].message);  
             //    console.log(messages[i].username);
 
                 html += '<b>' + (messages[i].username ? messages[i].username : 'Server') + ': </b>';
@@ -60,44 +60,45 @@ window.onload = function() {
         console.log(name.value);
 
 
-        if(name.value == "") {
+        if(name.value  == "")
+        {
             alert("Please type your name!");
         } else {
             var text = field.value;
             socket.emit('send', { message: text, username: name.value });
 
         }
-    }; 
+    };
 
-    sendRegister.onClick  = function() { 
+    sendRegister.onClick  = function() {
         console.log("register");
 
         var userData = {
 
 
-            _userID            :   dataExists(_userIDField),                 
-            _nickName          :   dataExists(_nickNameField),          
-            _firstName         :   dataExists(_firstNameField),                 
-            _lastName          :   dataExists(_lastNameField),                    
-            country            :   dataExists(countryField),                
-            email             :   dataExists(emailField),                       
-            cirruID           :   dataExists(cirruIDField),   
+            _userID            :   _userIDField,              
+            _nickName          :   _nickNameField,        
+            _firstName         :  _firstNameField,               
+            _lastName          :  _lastNameField,                 
+            country            :  countryField,            
+            email             :   emailField,                   
+            cirruID           :   cirruIDField, 
 
 
           //  sex               :                      
-            dateOfBirth       :   dataExists(dateOfBirthField),               
-            blackOrWhite      :   dataExists(blackOrWhiteField),              
-            confirmedUser     :   dataExists(confirmedUserField),              
-            goldCubes         :   dataExists(goldCubesField),               
-            colorMode         :   dataExists(colorModeField),               
-            score             :   dataExists(scoreField),              
-            countryFilter     :   dataExists(countryFilterField),               
-            items             :   dataExists(itemsField),               
-            reported          :   dataExists(reportedField),           
-            penaltyOn         :   dataExists(penaltyOnField)            
+            dateOfBirth       :   dateOfBirthField,             
+            blackOrWhite      :   blackOrWhiteField,            
+            confirmedUser     :   confirmedUserField,            
+            goldCubes         :   goldCubesField,           
+            colorMode         :   colorModeField,          
+            score             :   scoreField,      
+            countryFilter     :   countryFilterField,              
+            items             :   itemsField,             
+            reported          :   reportedField,           
+            penaltyOn         :   penaltyOnField          
 
 
-        }
+        } 
         socket.emit(registerUser,userData);
 
     }
