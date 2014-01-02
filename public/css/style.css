@@ -1,16 +1,18 @@
-
-html {
+html
+{
 			height: 100%;
 			overflow: hidden;
 }
 
-#flashcontent {
+#flashcontent
+{
 			width: 100%;
 			height: 800px;
 
 }
 
-body {
+body 
+{
 
 	height: 100%;
 	margin: 0;
@@ -19,6 +21,7 @@ body {
 	overflow: scroll;
 }
 
-p {
+p 
+{
 			color:#FFFFFF;
 }

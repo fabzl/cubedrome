@@ -17,7 +17,7 @@ var SocketEvent =
 	IO_DISCONNECT		:	"disconnect",
 	REQUEST_FORM_DATA	:	"requestFormData",
 	SAVE_FORM_DATA		:	"saveFormData",
-	REGISTER_USER		:	"registerUser"
+	REGISTER_USER_DATA	:	"registerUserData"
 };
 
 
@@ -40,8 +40,8 @@ var _mongodb							=	require ("mongodb"),
 // required dependecies
 //-----------------------------------------------------------------------------//
 
-var	schema								=	require("./schema"),
-		db								=	require('./db');
+var	UserSchema								=	require("./schema"),
+	db										=	require('./db');
 	
 
 
@@ -92,6 +92,7 @@ function addSocketListeners()
 	// socket connection listeners 
 	_io.sockets.on (SocketEvent.IO_CONNECT, socketIOConnectionHandler);
 	_io.sockets.on (SocketEvent.IO_DISCONNECT, socketIODisonnectHandler);
+
 }
 
 
@@ -109,8 +110,7 @@ function expressConfiguration ()
 function routeRequestToindex (req, res)
 {
 		res.sendfile (__dirname + "/index.html");
-		console.log("IM RUNNNIF");
-
+		console.log("IM RUNNNING");
 }
 
 
@@ -123,10 +123,6 @@ _io.sockets.on('connection', function (socket) {
 });
 
 
-
-
-
-
 function socketIOConnectionHandler (socket)
 {
 	console.log ("Server:: [socketIOConnectionHandler]");
@@ -134,7 +130,7 @@ function socketIOConnectionHandler (socket)
 	usersConnected ++;
 
 	// socket.emit (SocketEvent.IO_CONNECT);
-	socket.on (SocketEvent.REGISTER_USER, saveFormDataHandler);
+	socket.on (SocketEvent.REGISTER_USER_DATA, saveFormDataHandler);
 	//socket.on (SocketEvent.REQUEST_FORM_DATA, requestFormDataHandler);
 	//socket.on (SocketEvent.SAVE_FORM_DATA, saveFormDataHandler);
 }
@@ -167,11 +163,32 @@ function saveFormDataHandler (data)
 {
 	console.log ("Server:: [saveFormDataHandler]");
 	
-	var	formID = data.formID,
-		callback = data.callback;
-	
-	checkIfFormDataExists (formID);
+	//console.log(data);
+	var record = new UserSchema(data);
+
+	record.save(function(err) {
+		if(err){ 
+			console.log(err);
+		//	res.status(500).json({status: 'failure'})
+		}else{
+		//	res.json({status: 'success'});
+		}
+
+	});
+
+	readFromDB();
+
 }
+
+function readFromDB() {
+
+	console.log("reading from DB");
+	console.log(UserSchema.find());
+
+}
+
+
+
 
 function checkIfFormDataExists (formID)
 {

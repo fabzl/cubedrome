@@ -27,13 +27,13 @@ window.onload = function() {
     itemsField                           =   document.getElementById("itemsField"),
     reportedField                        =   document.getElementById("reportedField"),
     penaltyOnField                       =   document.getElementById("penaltyOnField"),
-    registerUserField                    =   "registerUser";
+    registerUserData                    =   "registerUserData";
 
  
     socket.on('message', function (data) {
 
 
-        console.log(data.message);    
+    //    console.log(data.message);    
         
         if(data.message) {
             messages.push(data);
@@ -41,7 +41,7 @@ window.onload = function() {
 
             for(var i=0; i<messages.length; i++) {
 
-                console.log(messages[i].message);  
+            //    console.log(messages[i].message);  
             //    console.log(messages[i].username);
 
                 html += '<b>' + (messages[i].username ? messages[i].username : 'Server') + ': </b>';
@@ -56,11 +56,11 @@ window.onload = function() {
 
     sendButton.onclick = function() {
 
-        console.log("namevalue");
-        console.log(name.value);
+     //   console.log("namevalue");
+    //    console.log(name.value);
 
 
-        if(name.value  == "")
+        if(name.value  === "")
         {
             alert("Please type your name!");
         } else {
@@ -70,13 +70,13 @@ window.onload = function() {
         }
     };
 
-    sendRegister.onClick  = function() {
-        console.log("register");
+    sendRegister.onclick  = function() {
+    //    console.log("register");
 
         var userData = {
 
 
-            _userID            :   _userIDField,              
+            _userID            :   _userIDField,             
             _nickName          :   _nickNameField,        
             _firstName         :  _firstNameField,               
             _lastName          :  _lastNameField,                 
@@ -99,9 +99,14 @@ window.onload = function() {
 
 
         } 
-        socket.emit(registerUser,userData);
+        socket.emit(registerUserData,userData);
 
-    }
+        return false; 
+          }
+
+//console.log("sendRegister");
+//console.log(sendRegister);
+
 
     function dataExists (field) {
 
