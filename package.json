@@ -4,13 +4,13 @@
   "description": "Real time web chat",
   "dependencies": {
     "socket.io": "latest",
-    "express": "latest"
+    "express": "3.10.4"
      },
   "author": "developer",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-nodemon": "~0.1.2",
     "mongoose": "~3.8.3"
- 
+
   }
 }

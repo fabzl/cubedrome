@@ -2,12 +2,9 @@
 
 <head>
 
-	<title>Cubedrome</title>
-	<script src="js/chat.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
+	<title>LOL-CHAT</title>
+
 	<link rel="stylesheet" href="css/style.css" />
-	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/swfobject.js"></script>
 
 </head>
 
@@ -15,131 +12,37 @@
 		<div class="wrapper">
 
 
-			<div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
-			<div class="controls">Name: <input style="width:350px;" id="name" class="name"><br>
-			<input style="width:350px;" id="field" class="field">
-			<input id="sendButton" type="button" value="send"></div>
+			<div class="intro-window">
+				<div="central-info-box">
+					<img src="/img/logo.png">
+					<div class="controls">Enter your Nickname:<br>
+					<input style="width:320px;" id="name" class="name"></div>
+					<input id="sendButton" type="button" value="Done"></div>
+				</div>
+			</div>
 
-
-			<section class="register-section">
-				<header class="register-header">
-					<h1 class="app-name">Register</h1>
-				</header>
-
-				<form class="register-table">
-					<div class="form-column">
-
-						<div class="form-row">
-							<label class="userIDField">userID</label>
-							<input type="text" name="userIDField" class="register-date-input"></input>
-						</div>
-
-						<div class="form-row">
-							<label class="cirrusIDField">cirrusID</label>
-							<input type="text" name="" class="register-date-input"></input>
-						</div>
-						<div class="form-row">
-							<label class="nickNameField">nickName</label>
-							<input type="text" name="cirrusIDField" class="register-date-input"></input>
-						</div>
-
-						<div class="form-row">
-							<label class="firstNameField">firstName</label>
-							<input type="text" name="firstNameField" class="register-date-input"></input>
-						</div>
-						<div class="form-row">
-							<label class="lastNameField">lastName</label>
-							<input type="text" name="lastNameField" class="register-text-input"></input>
-						</div>
-							<div class="form-row">
-							<label class="emailField">email</label>
-							<input type="text" name="emailField" class="register-text-input"></input>
-						</div>
-						</div>
-							<div class="form-row">
-							<label class="sexField">sex</label>
-							<input type="radio" name="sex" value="male">Male<br>
-							<input type="radio" name="sex" value="female">Female
-						</div>
-
-						</div>
-							<div class="form-row">
-							<label class="blackOrWhiteField">black or White</label>
-							<input type="text" name="blackOrWhiteField" class="register-text-input"></input>
-						</div>
-
-						</div>
-							<div class="form-row">
-							<label class="goldCubesField">goldCubes</label>
-							<input type="text" name="goldCubesField" class="register-text-input"></input>
-						</div>
-												</div>
-							<div class="form-row">
-							<label class="scoreField">score</label>
-							<input type="text" name="scoreField" class="register-text-input"></input>
-						</div>
-
-
-						</div>
-							<div class="form-row">
-							<label class="colorModeField">colorMode</label>
-							<input type="text" name="colorModeField" class="register-text-input"></input>
-						</div>
-						
-
-						<div class="form-row">
-							<label class="countryField">country</label>
-							<input type="text" name="countryField" class="register-text-input"></input>
-						</div>
-
-						<div class="form-row">
-							<label class="countriesFilteredField">countriesFiltered</label>
-							<input type="text" name="job-number" class="register-text-input"></input>
-						</div>
-
-						<div class="form-row">
-							<label class="itemsField">items</label>
-							<input type="text" name="job-number" class="register-text-input"></input>
-						</div>
-
-							<div class="form-row">
-							<label class="dateOfBirthField">Date of Birth</label>
-							<input type="date" name="start-date" class="register-date-input"></input>
-								</div>
-						</div>
-							<div class="form-row">
-							<label class="confirmedUserField">confirmedUser</label>
-							<input type="text" name="start-date" class="register-date-input"></input>
-						</div>
-
-							<div class="form-row">
-							<label class="reportedField">reported</label>
-							<input type="text" name="start-date" class="register-date-input"></input>
-						</div>
-						<div class="form-row">
-							<label class="penaltyField">penalty</label>
-							<input type="text" name="start-date" class="register-date-input"></input>
-						</div>
-						<div class="form-row">
-							<label class="usersConnectedField">usersConnected</label>
-							<input type="text" name="start-date" class="register-date-input"></input>
-						</div>
-
-						<button id="sendRegister" value="register"></button>
-
-
-					</div>
-
-					<div class="form-column">
-					</div>
-				</form>
-
-			</section>
+		<div class="list-window">
+			<div class="list-header">
+				<div class="usernameDisplay"></div>
+				<div class="usersConnectedDisplay"></div>
+				<div class="list">
+					<ul class="users-list"></ul>
+				</div>
+			</div>
 		</div>
 
-  	<div id="flashcontent">
-		<p>This is the flash content div</p>
-    </div>
+			<div class="chat-window">
+
+				<div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+				<input style="width:350px;" id="field" class="field">
+				<input id="TalkButton" type="button" value="send"></div>
+			</div>
+		</div>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/chat.js"></script>
 
 	</body>
+
+
 </html>

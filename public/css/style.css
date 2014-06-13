@@ -8,12 +8,10 @@ html
 {
 			width: 100%;
 			height: 800px;
-
 }
 
-body 
+body
 {
-
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -21,7 +19,53 @@ body
 	overflow: scroll;
 }
 
-p 
+.wrapper {
+	text-align: center;
+
+
+}
+
+p
 {
-			color:#FFFFFF;
+	color:#FFFFFF;
+}
+
+.intro-window {
+	background: #fff;
+}
+
+.list-window {
+
+	background: #749dbc;
+
+}
+
+.chat-window {
+	background: #d06f6f;
+
+}
+
+.usernameDisplay {
+
+	width: 50%;
+ 	display: inline-block;
+
+ }
+
+.usersConnectedDisplay {
+
+	width: 50%;
+ 	display: inline-block;
+}
+
+.list-header {
+
+	background: #559dbc;
+	width: 100%;
+
+}
+.wrapper {
+
+		width: 100%;
+
 }
